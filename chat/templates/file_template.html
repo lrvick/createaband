@@ -1,0 +1,58 @@
+<SCRIPT LANGUAGE=JavaScript1.1>
+<!--
+
+/** This function opens a popup window with the profile of <username> in it. The parameters
+that control the style, size and positioning of the popup window are in the config.php file */
+
+function getChatProfile( username )
+{
+	window.open( "$popupPath?username=" + username, "userProfile", "width=$popupWidth,height=$popupHeight,top=$popupTopOffset,left=$popupLeftOffset,$popupOptions" );
+}
+
+/** Opens a help popup window. If you want this help window to be a different size or offset
+from the chat profile popup window, or have different popup options, you can insert the values
+you want directly into this function, e.g. "width=300,height=400" etc. */
+
+function getHelp()
+{
+	window.open( "$chatModulePath/help.php", "helpWindow", "width=$popupWidth,height=$popupHeight,left=$popupLeftOffset,top=$popupTopOffset,$popupOptions" );
+}
+
+var MM_contentVersion = 6;
+var plugin = (navigator.mimeTypes && navigator.mimeTypes["application/x-shockwave-flash"]) ? navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin : 0;
+if ( plugin ) {
+		var words = navigator.plugins["Shockwave Flash"].description.split(" ");
+	    for (var i = 0; i < words.length; ++i)
+	    {
+		if (isNaN(parseInt(words[i])))
+		continue;
+		var MM_PluginVersion = words[i];
+	    }
+	var MM_FlashCanPlay = MM_PluginVersion >= MM_contentVersion;
+}
+// MSIE can use codebase to get the FlashPlayer
+if ( MM_FlashCanPlay || navigator.userAgent.indexOf('MSIE') != -1 ) {
+	document.write(' <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" ');
+	document.write('  codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,79,0" ');
+	document.write(' ID="FlashChat" WIDTH="540" HEIGHT="540" ALIGN="">');
+	document.write(' <PARAM NAME=movie ');
+	document.write(' VALUE="<{$chatModulePath}>/FlashChat.swf?lang=<{$lang}>&path=<{$chatModulePath}>&bgcolor=<{$backgroundColor}>&modpass=<{$modpass}>&name=<{$username}>"> ');
+
+	document.write(' <PARAM NAME=name VALUE="<{$username}>"> ');
+	document.write(' <PARAM NAME=quality VALUE=high> ');
+	document.write(' <PARAM NAME=bgcolor VALUE="<{$backgroundColor}>"> ');
+	document.write(' <PARAM NAME=path VALUE="<{$chatModulePath}>"> ');
+	document.write(' <PARAM NAME=modpass VALUE="<{$modpass}>"> ');
+	document.write(' <PARAM NAME=lang VALUE="<{$lang}>"> ');
+
+	document.write(' <EMBED src="<{$chatModulePath}>/FlashChat.swf?lang=<{$lang}>&path=<{$chatModulePath}>&bgcolor=<{$backgroundColor}>&modpass=<{$modpass}>&name=<{$username}>" ');
+	document.write(' quality=high bgcolor="<{$backgroundColor}>" ');
+	document.write(' swLiveConnect=FALSE WIDTH="540" HEIGHT="540" NAME="FlashChat" ALIGN="" ');
+	document.write(' TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer"> ');
+	document.write(' </EMBED> ');
+	document.write(' </OBJECT> ');
+} else{
+	document.location.href = "<{$chatModulePath}>/noFlash.php";
+}
+//-->
+</SCRIPT>

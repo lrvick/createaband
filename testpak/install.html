@@ -1,0 +1,462 @@
+<HTML>
+<HEAD>
+	<TITLE>Test-CGI Package: Manual Install Instructions</TITLE>
+	<META NAME="description" CONTENT="Describes how to download, customize, and install the product. Includes trouble-shooting tips. Include the list of all files and folders with desccriptions.">
+
+<STYLE TYPE="text/css"><!--
+BODY {
+	margin-top:20px;
+	margin-bottom:20px;
+	}
+INPUT.submit,SPAN,BODY,TH,TD,UL,LI,P,DT,DD,DL {
+	font-family:verdana;
+	font-size:10pt;
+	}
+A:hover {
+	color:#ce0000;
+	}
+.small {
+	font-size:8pt;
+	}
+IMG {
+	border-color:#000000;
+	}
+TEXTAREA,INPUT,PRE {
+	font-family:monospace;
+	}
+INPUT.submit {
+	cursor:hand;
+	background-color:#ffffff;
+	}
+CODE {
+	font-family:monospace;
+	color: #006699;
+	}
+//--></STYLE>
+</HEAD>
+<BODY>
+<CENTER><DIV STYLE="width:638px;align:center;text-align:left">
+
+
+<P><B>Test-CGI Package v1.0.0.0002</B></P>
+<P><B>Manual Install Instructions</B></P>
+
+<P>Last modified on Monday, February 26, 2001.</P>
+
+<P>Disclaimer: these instructions are product-specific and version-specific. Different versions of the same product may have slightly different file configurations, etc. If you install a version other than 1.0.0.0002, you may want to follow the install.html file included with it instead of this one.</P>
+
+<P>This product has been designed for fast and easy installation. Follow these simple steps to get the script up and running in just a few minutes.</P>
+
+<OL>
+	<LI>
+
+		<P><B>Download</B></P>
+		<P>Download the product appropriate to your platform:</P>
+		<UL>
+			<LI> <A HREF="http://www.xav.com/scripts/testpak/download/testpak.1.0.0.0002.zip">www.xav.com/scripts/testpak/download/testpak.1.0.0.0002.zip</A> - Windows
+			<LI> <A HREF="http://www.xav.com/scripts/testpak/download/testpak.1.0.0.0002.tar.gz">www.xav.com/scripts/testpak/download/testpak.1.0.0.0002.tar.gz</A> - Unix
+			<LI> <A HREF="http://www.xav.com/scripts/testpak/download/">www.xav.com/scripts/testpak/download</A> - all other versions
+		</UL>
+		<P>Each archive contains the exact same code, except that the Windows version uses "\r\n" line endings, and the Unix version uses "\n" endings.</P>
+		<P>The .tar.gz version can be decompressed with the commands:</P>
+		<BLOCKQUOTE>
+			<TT>gzip -d testpak.1.0.0.0002.tar.gz<BR>tar -xf testpak.1.0.0.0002.tar</TT>
+		</BLOCKQUOTE>
+		<P>The .zip version can be decompressed with Winzip from www.winzip.com.</P>
+		<P><BR></P>
+
+	<LI>
+		<P><B>Build Directory Structure</B></P>
+
+		<P>The script uses a specific directory structure to organize its libraries and data files. When the downloaded archives are expanded, they will automatically expand into the desired structure.</P>
+
+		<P>If the zips don't expand to the proper directory structure, or if you need to create the structure manually, see <A HREF="#ap2">Appendix II</A>. It includes an overview of all files and folders and what they do and where they belong.</P>
+
+		<P><B>Note:</B> this script uses <I>relative paths</I> extensively, and so its very demanding about its directory structure. It does not use <I>absolute paths</I> at all, however. That means you don't need to enter the absolute path into the script configuration files (if it needs to know its absolute path, it will auto-detect it). Also, you don't need to place the script into any special folder like "cgi-bin" or "cgi-local" - any folder on your website that can execute scripts will be sufficient. Finally, if you want to move the script from one folder to another, or from one site to another, you can just move it. No re-configuration is needed.</P>
+
+		<P><BR></P>
+
+	<LI>
+		<P><B>Customize Script</B></P>
+
+		<P>99.9% of this script is configured after the install is complete, using the admin control panel. Only two things need to be configured during installation: the path to Perl, and the CGI extension. And the defaults are usually fine.</P>
+
+		<P>In this step, you need to edit the CGI script files only. Some libraries and data files also use the ".pl" extension, but those <I>must not</I> be renamed or edited. The CGI script files are: (remember, their file extensions may end up different for you)</P>
+
+		<UL>
+
+<LI> testpak/env.pl
+<LI> testpak/encode.pl
+<LI> testpak/socket.pl
+<LI> testpak/basic_forms.pl
+<LI> testpak/file_upload.pl
+
+		</UL>
+
+		<P>1. If your path to Perl is not "/usr/local/bin/perl", then edit the first line of the script to point the appropriate path. Popular locations include "/usr/bin/perl" and "/usr/bin/perl5".</P>
+		<P>2. On some systems you may need to use a specific extension, usually either .pl or .cgi. Try both extensions if things aren't working right.</P>
+
+		<P><B>Warning:</B> when you open the script file to edit the path to Perl, use the most hardcore text editor you have. Like, Notepad on Windows, Simple Text on Mac, vi on Unix. Do not use high-level editors like Microsoft Word or HTML editors like FrontPage. There is a risk that these high-level editors will damage the code.</P>
+
+		<P><BR></P>
+
+	<LI>
+		<P><B>Transfer Files</B></P>
+		<P>Unless you're doing all of your work on the web server itself, you must transfer the files and folders over to your web server. When transferring script files or data files in FTP, always use ASCII mode.</P>
+		<P><BR></P>
+
+	<LI>
+		<P><B>Set Permissions</B></P>
+		<P>The easiest way to set permissions is to run the "setperms" script appropriate for your platform. Run setperms.bat on Windows and setperms.sh on Unix.</P>
+		<P>If you have only FTP access to a Unix server, then you can set the permissions with FTP while you're transferring. Use the permissions guide in Appendix II below.</P>
+		<P>If you have a Windows web server without shell access, then typically you won't be able to run scripts from the command line nor set permissions via FTP.  In this case, the best approach is to try an install anyway (the server file system is often read/write/exec by default). If this doesn't work then contact the tech support people and ask them to run setperms.bat for you. If tech support can't help, you can use the Auto Installer process to remotely set Windows file permissions.</P>
+		<P><BR></P>
+
+	<LI>
+		<P><B>Test</B></P>
+		<P>Visit the URL "testpak/env.cgi" to get started.</P>
+		<P></P>
+		<P><BR></P>
+	</OL>
+
+<P><B>Manual Install Complete!</B></P>
+
+<HR SIZE=1>
+
+<A NAME="ap1"></A>
+
+<P><BR></P>
+
+<P><B>Appendix I: Error Handling</B></P>
+
+<P>If you run into trouble, consider an automated install. The automatic install can self-heal from most common error conditions.</P>
+<P>Free Manual Custom installs are available from the script author (as of Monday, February 26, 2001). To take advantage of this service, first attempt an automatic install. If it fails, you will have the option to forward an install request. Installs are usually finished within 24 hours.</P>
+<P>You can also visit the <A HREF="http://www.xav.com/scripts/forum.pl">Discussion Forum</A> with a description of your problem. It stays very busy and there are many helpful people there.</P>
+<P>The Auto-Installer is here: <A HREF="http://www.xav.com/cgi-sys/cgiwrap/xav/install.cgi">www.xav.com/cgi-sys/cgiwrap/xav/install.cgi</A></P>
+
+<A NAME="ap2"></A>
+
+<P><BR></P>
+
+<P><B>Appendix II: Directory Structure and File Descriptions</B></P>
+
+<P><BR></P>
+
+<P>This file manifest applies to version 1.0.0.0002. If you are installing a different version, use the install.html file included with it.</P>
+
+<P>The file permissions are modeled on the default Apache or Microsoft IIS permissions system, where a user account owns the files and a separate, unprivileged account, executes the CGI scripts. This is not the most secure configuration in the world, but it is the default that has been established, and so these file permissions follow it. If you have a system where your CGI scripts are executed under your user account context (as when using CGIWrap, when using setuid Perl, using Hypermart.net or many other free web hosts, etc.) then you can and should replace all permissions with 755/rwxr-xr-x.</P>
+
+<P><BR></P>
+
+<TABLE>
+<TR>
+<TD VALIGN=top>
+
+<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR>
+	<TH COLSPAN=2>Icons</TH>
+</TR>
+<TR>
+	<TD><IMG SRC=/xav/images/mkdir.gif HEIGHT=16 WIDTH=16></TD>
+	<TD>folder</TD>
+</TR>
+<TR>
+	<TD><IMG SRC=/xav/images/force.gif HEIGHT=16 WIDTH=16></TD>
+	<TD>script file</TD>
+</TR>
+<TR>
+	<TD><IMG SRC=/xav/images/upload.gif HEIGHT=16 WIDTH=16></TD>
+	<TD>data file</TD>
+</TR>
+<TR>
+	<TD><IMG SRC=/xav/images/trans.gif HEIGHT=8 WIDTH=8 HSPACE=3 VSPACE=3 BORDER=1></TD>
+	<TD>optional file</TD>
+</TR>
+</TABLE>
+
+</TD>
+<TD VALIGN=top>
+
+<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR>
+	<TH COLSPAN=2>Required</TH>
+</TR>
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD>Required file or folder</TD>
+</TR>
+<TR>
+	<TD><INPUT TYPE=checkbox></TD>
+	<TD>Optional file or folder</TD>
+</TR>
+</TABLE>
+
+</TD>
+<TD VALIGN=top>
+
+<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR>
+	<TH COLSPAN=2>Permissions</TH>
+</TR>
+<TR>
+	<TD><TT>755 / rwx r-x r-x</TT></TD>
+	<TD>read and execute</TD>
+</TR>
+<TR>
+	<TD><TT>766 / rwx rw- rw-</TT></TD>
+	<TD>read and write</TD>
+</TR>
+<TR>
+	<TD><TT>777 / rwx rwx rwx</TT></TD>
+	<TD>read, write, and execute</TD>
+</TR>
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+
+<P><BR></P>
+
+</DIV>
+
+<TABLE BORDER=1 CELLSPACING=1 CELLPADDING=1>
+<TR>
+	<TH COLSPAN=4 ALIGN=left>Is Required Object</TH>
+</TR>
+<TR>
+	<TH><BR></TH>
+	<TH>Permissions</TH>
+	<TH>File / Folder</TH>
+	<TH>Description</TH>
+</TR>
+
+
+<TR>
+	<TD><INPUT TYPE=checkbox></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR> <IMG SRC=/xav/images/trans.gif HEIGHT=8 WIDTH=8 HSPACE=3 VSPACE=3 BORDER=1> setperms.bat</NOBR></TD>
+	<TD><NOBR>sets all permissions needed for this product on Windows
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR> <IMG SRC=/xav/images/trans.gif HEIGHT=8 WIDTH=8 HSPACE=3 VSPACE=3 BORDER=1> setperms.sh</NOBR></TD>
+	<TD><NOBR>sets all permissions needed for this product on Unix
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR><IMG SRC="http://www.xav.com/images/mkdir.gif" WIDTH=16 HEIGTH=16> testpak</NOBR></TD>
+	<TD><NOBR>Main product folder
+</NOBR><BR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> basic_forms.pl</NOBR></TD>
+	<TD><NOBR>Basic FORM tests involving POST, GET, and ISINDEX
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> encode.pl</NOBR></TD>
+	<TD><NOBR>simple CGI script for URL-encoding and HTML-encoding
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> env.pl</NOBR></TD>
+	<TD><NOBR>prints all environment variables
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> file_upload.pl</NOBR></TD>
+	<TD><NOBR>A file upload FORM test
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/trans.gif HEIGHT=8 WIDTH=8 HSPACE=3 VSPACE=3 BORDER=1> install.html</NOBR></TD>
+	<TD><NOBR>The install help file
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/trans.gif HEIGHT=8 WIDTH=8 HSPACE=3 VSPACE=3 BORDER=1> license.html</NOBR></TD>
+	<TD><NOBR>The legal license thing
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> socket.pl</NOBR></TD>
+	<TD><NOBR>comprehensive test of server-side socket capabilities
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>777 / rwx</TT></NOBR></TD>
+	<TD><NOBR><IMG SRC="http://www.xav.com/images/mkdir.gif" WIDTH=16 HEIGTH=16> testpak/data</NOBR></TD>
+	<TD><NOBR>write-able folder
+</NOBR><BR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR><IMG SRC="http://www.xav.com/images/mkdir.gif" WIDTH=16 HEIGTH=16> testpak/ssi</NOBR></TD>
+	<TD><NOBR>SSI test folder
+</NOBR><BR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> include.txt</NOBR></TD>
+	<TD><NOBR>sample include file
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> testme.htm</NOBR></TD>
+	<TD><NOBR>file which calls the include file
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> testme.html</NOBR></TD>
+	<TD><NOBR>file which calls the include file
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> testme.shtml</NOBR></TD>
+	<TD><NOBR>file which calls the include file
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> testme.stm</NOBR></TD>
+	<TD><NOBR>file which calls the include file
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR><IMG SRC="http://www.xav.com/images/mkdir.gif" WIDTH=16 HEIGTH=16> testpak/ssi/override</NOBR></TD>
+	<TD><NOBR>SSI test folder with an Apache override file
+</NOBR><BR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/trans.gif HEIGHT=8 WIDTH=8 HSPACE=3 VSPACE=3 BORDER=1> .htaccess</NOBR></TD>
+	<TD><NOBR>Apache override file which attempts to force SSI parsing
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> include.txt</NOBR></TD>
+	<TD><NOBR>sample include file
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> testme.htm</NOBR></TD>
+	<TD><NOBR>file which calls the include file
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> testme.html</NOBR></TD>
+	<TD><NOBR>file which calls the include file
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> testme.shtml</NOBR></TD>
+	<TD><NOBR>file which calls the include file
+<BR></NOBR></TD>
+</TR>
+
+<TR>
+	<TD><INPUT TYPE=checkbox CHECKED DISABLED></TD>
+	<TD><NOBR><TT>755 / r-x</TT></NOBR></TD>
+	<TD><NOBR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <IMG SRC=/xav/images/force.gif WIDTH=16 HEIGHT=16> testme.stm</NOBR></TD>
+	<TD><NOBR>file which calls the include file<BR></NOBR></TD>
+</TR>
+
+
+<TR>
+	<TH><BR></TH>
+	<TH>Permissions</TH>
+	<TH>File / Folder</TH>
+	<TH>Description</TH>
+</TR>
+<TR>
+	<TH COLSPAN=4 ALIGN=left>Is Required Object</TH>
+</TR>
+</TABLE>
+
+<DIV STYLE="width:638px;align:center;text-align:left">
+
+<P><BR></P>
+
+<P><BR></P>
+
+<P><B>Appendix III: Additional Resources</B></P>
+
+
+<UL>
+	<LI><A HREF="http://www.xav.com/scripts/testpak/">General Product Information</A>
+	<LI><A HREF="http://www.xav.com/scripts/testpak/changes.html">Version History</A>
+	<LI><A HREF="http://www.xav.com/scripts/testpak/install.html">Manual Install Instructions</A>
+</UL>
+<P><BR></P>
+
+
+<P><BR></P>
+
+<P ALIGN="right" STYLE="font-size:8pt;color:#888888">&copy; 1997-2001 by Zoltan Milosevic</P>
+
+</DIV></CENTER>
+
+</BODY>
+</HTML>

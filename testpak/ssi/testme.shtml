@@ -1,0 +1,10 @@
+
+<P>Hello there. I am an HTML document with an embedded SSI tag.</P>
+
+<P>You should see the text "Include Test Successful" right there:</P>
+
+<XMP><!--#include file="include.txt" --></XMP>
+
+<P>If you see <TT>&lt;!--#include file="include.txt" --&gt;</TT> instead, then SSI is not enabled for this file extension.</P>
+
+

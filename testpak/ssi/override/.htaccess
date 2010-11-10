@@ -1,0 +1,2 @@
+Options +Includes
+AddType text/x-server-parsed-html .stm .html .htm

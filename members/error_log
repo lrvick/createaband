@@ -1,0 +1,4 @@
+[09-Apr-2006 03:40:26] PHP Warning:  require(lang/english.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/cab/public_html/templates/inc_getsetlang.php on line 25
+[09-Apr-2006 03:40:26] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'lang/english.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/cab/public_html/templates/inc_getsetlang.php on line 25
+[05-May-2006 19:59:12] PHP Warning:  require(lang/english.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/cab/public_html/templates/inc_getsetlang.php on line 25
+[05-May-2006 19:59:12] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'lang/english.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/cab/public_html/templates/inc_getsetlang.php on line 25

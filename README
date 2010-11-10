@@ -1,0 +1,13 @@
+So I have no honest idea who some of this code belongs to. I know there is code from myself Lance Reagan Vick, Steven VanHorn, and lots of random code from some Indian company called Avow Labs though I think we dealt with some reseller down the line trying to re-coop his investment.
+
+This is the last snapshot of a terribly broken codebase for a social networking site for bands looking for artists (and musicians looking for bands).
+
+I was contracted to build this site single-handedly on a very short time-frame and a good chunk of this code was purchased for some crazy sum of money with assurances that investment should be made back by reselling it to others... and the code was handed to me to develop with no licensing restrictions or agreements whatsoever. 
+
+People have offered to buy the code for a fair sum and keep it closed... but I think whoever the original sellers were would rather the cycle of reselling continue to keep the value high. That said close-sourcing things and/or charging for code is just not my style and I no longer have a use for it as the original create-a-band site died in a server collapse. There is much nicer code out there like OpenSocial that is open source anyway.
+
+The sate of the code as it was handed to me had many indications it had changed hands many times. In any event the funding/domain/project are all long since dead and I have seen VERY similar sites to this one floating around on the web so I can only assume others bought this shady code as well.
+
+There is no database and what is here is what is here... it was all I could recover. Consider this all broken and for reference.
+
+Until someone can show me why I can not legally do so, I hereby call this whole mess GPL2. Have fun.
